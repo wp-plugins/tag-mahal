@@ -134,13 +134,13 @@ class FlaptorTagMahalSuggester {
 		function flaptorTagMahal_showTags(response) {
 			html = "";
 			fontWeights = ['xx-small', 'x-small', 'small', 'medium', 'large'];
-	
+		
 			if(response && response.tags.length > 0) {
 				
 				html += "<table width='100%' align=\"center\">";
 				max = response.tags[0].score;
 				for(i = 0; i < response.tags.length; i++) {		
-				
+
 					fontSize = fontWeights[Math.round(4 * response.tags[i].score/max)];
 						
 					html += "<tr><td align=\"center\" width='100%'>";
@@ -150,7 +150,8 @@ class FlaptorTagMahalSuggester {
 					html += "</a></span>";
 					html += "</td></tr>";
 				}
-	
+	            
+		
 				html += "</table>";
 	
 			} else {
@@ -160,8 +161,10 @@ class FlaptorTagMahalSuggester {
 				html += "</td></tr>";
 				html += "</table>";
 			}
-			suggestedTags = document.getElementById("suggestedTags");
-			suggestedTags.innerHTML = html;
+			
+			var suggestedTagsElement;
+			suggestedTagsElement = document.getElementById("suggestedTags");
+			suggestedTagsElement.innerHTML = html;
 
 			// Remove the "loading" message off the button.
 			flaptorTagMahal_loaded();
