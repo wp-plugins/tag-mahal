@@ -109,10 +109,12 @@ class FlaptorTagMahalSuggester {
 		  // if it has to get the content from the TextArea.
 		  text = "";
 		   
-		  if (tinyMCE.getInstanceById("content")) {
-		  	text = tinyMCE.getInstanceById("content").contentWindow.document.body.innerHTML;
-		  } 
-		  
+		  if (typeof tinyMCE != 'undefined') {
+			  if (tinyMCE.getInstanceById("content")) {
+			  	text = tinyMCE.getInstanceById("content").contentWindow.document.body.innerHTML;
+			  } 
+		  }
+		  		  
 		  if (text == "") {
 		  	text = document.getElementById("content").value;
 		  } 
