@@ -9,7 +9,8 @@ Suggests tags for a post using the Flaptor Tagger API
 
 == Description ==
 
-Automatic tag suggester for post content that uses an intelligent system. It works in a toolbox in the sidebar. 
+Tag suggester for post content using state of the art machine learning
+algorithms for semantic analysis. It works in a toolbox in the sidebar. 
 It provides a button that connects to the Flaptor Tagger API through HTTP, 
 retrieves a list of possible tags and displays them in the toolbox. You can add any of the 
 suggested tags by clicking on it, or get new suggestions using the 
