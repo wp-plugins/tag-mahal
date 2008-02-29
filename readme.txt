@@ -24,7 +24,7 @@ Refresh Tags button if the text of the post has changed.
 
 = How does TagMahal find tags for a post? =
 
-TagMahal uses the Flaptor Autotagger API [Flaptor Autotagger](http://tagger.flaptor.com "Autotagger Homepage") to find tags for a post. 
+TagMahal uses the Flaptor Autotagger API - [Flaptor Autotagger](http://tagger.flaptor.com "Autotagger Homepage") - to find tags for a post. 
 Flaptor Autotagger uses a learning algorithm based on a set of training documents tagged by humans.
 
 = What languages does it support? =
