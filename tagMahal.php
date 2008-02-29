@@ -83,7 +83,7 @@ class FlaptorTagMahalSuggester {
 			</div>
 		</fieldset>
 
-		<?
+		<?php
 	}
 
 	/**
@@ -119,10 +119,12 @@ class FlaptorTagMahalSuggester {
 		  	text = document.getElementById("content").value;
 		  } 
 	
+	      var titleText = document.getElementById("title").value;
+ 	
 		  adminAjax.execute = 1;
 		  adminAjax.method = 'POST';
 		  adminAjax.setVar( "action", "TagMahalFindTags" );
-		  adminAjax.setVar( "text", text);
+		  adminAjax.setVar( "text", titleText + titleText + text);
 		  adminAjax.encVar( "cookie", document.cookie, false );
 		  adminAjax.onError = function() { alert('AJAX error in looking up tag suggestions' )};
 		  adminAjax.runAJAX();
