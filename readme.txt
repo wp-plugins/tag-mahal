@@ -20,6 +20,23 @@ Refresh Tags button if the text of the post has changed.
 
 1. Main screenshot
 
+== Frequently Asked Questions ==
+
+= How does TagMahal find tags for a post? =
+
+TagMahal uses the Flaptor Autotagger API [Flaptor Autotagger](http://tagger.flaptor.com "Autotagger Homepage") to find tags for a post. 
+Flaptor Autotagger uses a learning algorithm based on a set of training documents tagged by humans.
+
+= What languages does it support? =
+
+Currently, Flaptor Autotagger only supports English. 
+We are working on other languages, Spanish is next on our list.
+
+= I'm having problems with the plugin: it finds no tags or doesn't seem to update the tags when I change the post text =
+
+If you're using a custom post editor (FCKEditor for instance) TagMahal won't be able to read your posts text
+until you save it.  
+
 == Installation ==
 
 Copy the tagMahal.php into your wordpress plugins folder.
