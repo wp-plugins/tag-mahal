@@ -16,6 +16,10 @@ retrieves a list of possible tags and displays them in the toolbox. You can add 
 suggested tags by clicking on it, or get new suggestions using the 
 Refresh Tags button if the text of the post has changed.
 
+== Screenshots ==
+
+1. Main screenshot
+
 == Installation ==
 
 Copy the tagMahal.php into your wordpress plugins folder.
