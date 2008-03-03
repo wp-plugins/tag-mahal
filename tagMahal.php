@@ -1,6 +1,6 @@
 <?php 
 /*
-Plugin Name: Tag Mahal
+Plugin Name: TagMahal - Automatic tag suggester
 Plugin URI: http://tagger.flaptor.com/tagmahal
 Description: This plugin suggests tags for a post using the Flaptor Tagger API. The tags provided by the API are based on an intelligent system that learns from large amounts of content tagged by human authors. As a result, it may suggest words that are not present in the text but are considered relevant to the topic. 
 Version: 1.0.2
