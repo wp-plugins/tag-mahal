@@ -3,7 +3,7 @@ Contributors: www.flaptor.com
 Tags: autotagging, tagging, tags, suggestions, tag, keywords, Post, suggest, auto, automatic
 Requires at least: 2.0.5
 Tested up to: 2.3.3
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 
 Suggests tags for a post using the Flaptor Tagger API
 

@@ -3,7 +3,7 @@
 Plugin Name: TagMahal - Automatic tag suggester
 Plugin URI: http://tagger.flaptor.com/tagmahal
 Description: This plugin suggests tags for a post using the Flaptor Tagger API. The tags provided by the API are based on an intelligent system that learns from large amounts of content tagged by human authors. As a result, it may suggest words that are not present in the text but are considered relevant to the topic. 
-Version: 1.0.2
+Version: 1.0.3
 Author: Flaptor
 Author URI: http://www.flaptor.com
 */
@@ -29,11 +29,12 @@ class FlaptorTagMahalSuggester {
 		$text = $_REQUEST['text'];
 		$apiHost = "tagger.apis.flaptor.com";
 		$apiURL = "/";
-		$appKey = "-";
+		$appKey = "tagmahal-1.0.3";
+		$client = "tagmahal-1.0.3";
 		$text = urlencode($text);
 		$blogUrl = get_bloginfo('wpurl');
 		$blogName = get_bloginfo( 'name' );		
-		$data = "key=" . $appKey . "&input=html&output=json&text=" . $text . "&blogUrl=" . $blogUrl . "&blogName=" . $blogName . "&version=1.0";
+		$data = "key=" . $appKey . "&input=html&output=json&text=" . $text . "&blogUrl=" . $blogUrl . "&blogName=" . $blogName . "&client=" . $client;
 	
 		$connection = fsockopen($apiHost, 80, $errno, $errstr, 30);
 		if (!$connection) die("$errstr ($errno)\n");
@@ -139,33 +140,46 @@ class FlaptorTagMahalSuggester {
 			html = "";
 			fontWeights = ['xx-small', 'x-small', 'small', 'medium', 'large'];
 		
-			if(response && response.tags.length > 0) {
-				
-				html += "<table width='100%' align=\"center\">";
-				max = response.tags[0].score;
-				for(i = 0; i < response.tags.length; i++) {		
+			if (typeof response.message != 'undefined' &&
+				response.message != '') {
 
-					fontSize = fontWeights[Math.round(4 * response.tags[i].score/max)];
-						
-					html += "<tr><td align=\"center\" width='100%'>";
-					html += "<span style='font-size: " + fontSize + "'>";
-					html += "<a href=\"javascript:flaptorTagMahal_useTag('" + response.tags[i].name +"')\" style=\"text-decoration: none; border-bottom: 0px\">";
-					html += response.tags[i].name;
-					html += "</a></span>";
-					html += "</td></tr>";
-				}
-	            
-		
-				html += "</table>";
-	
-			} else {
 				html = "<table width='100%' align=\"center\">";
 				html += "<tr><td align=\"center\" width='100%'>";
-				html += "<?php _e('No Tags') ?>";
+				html += response.message;
 				html += "</td></tr>";
 				html += "</table>";
-			}
+					
+			} else {
+		
+				if(response && response.tags.length > 0) {
+					
+					html += "<table width='100%' align=\"center\">";
+					max = response.tags[0].score;
+					for(i = 0; i < response.tags.length; i++) {		
+	
+						fontSize = fontWeights[Math.round(4 * response.tags[i].score/max)];
+							
+						html += "<tr><td align=\"center\" width='100%'>";
+						html += "<span style='font-size: " + fontSize + "'>";
+						html += "<a href=\"javascript:flaptorTagMahal_useTag('" + response.tags[i].name +"')\" style=\"text-decoration: none; border-bottom: 0px\">";
+						html += response.tags[i].name;
+						html += "</a></span>";
+						html += "</td></tr>";
+					}
+		            
 			
+					html += "</table>";
+		
+				} else {
+					html = "<table width='100%' align=\"center\">";
+					html += "<tr><td align=\"center\" width='100%'>";
+					html += "<?php _e('No Tags') ?>";
+					html += "</td></tr>";
+					html += "</table>";
+				}
+
+			}
+						
 			var suggestedTagsElement;
 			suggestedTagsElement = document.getElementById("suggestedTags");
 			suggestedTagsElement.innerHTML = html;
